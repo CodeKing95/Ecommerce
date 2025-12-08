@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import "./CartPage.css"; // ← Add this
 import {
   increaseQty,
   decreaseQty,
@@ -6,6 +7,7 @@ import {
   clearCart,
 } from "../redux/cartSlice";
 import type { RootState } from "../redux/store";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -14,49 +16,39 @@ const CartPage = () => {
   );
 
   return (
-    <div className="container py-12">
-      <h2 className="text-4xl font-bold mb-10 text-center">🛒 Shopping Cart</h2>
+    <div className="cart-container">
+      <h2 className="cart-title">🛒 Your Cart</h2>
 
       {items.length === 0 ? (
-        <p className="text-center text-lg font-medium text-gray-600">
-          Your cart is empty! Keep shopping 😊
-        </p>
+        <p className="empty-text">Your cart is empty! Keep shopping 😊</p>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="cart-layout">
           
           {/* Cart Items */}
-          <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg space-y-6">
+          <div className="cart-items">
             {items.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center justify-between gap-6 border-b pb-4"
-              >
-                <div className="flex items-center gap-4">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-20 h-20 rounded-lg object-cover border"
-                  />
+              <div key={item.id} className="cart-item">
+                <div className="item-details">
+                  <img src={item.img} alt={item.title} className="item-img" />
+
                   <div>
-                    <h3 className="font-semibold text-lg">{item.title}</h3>
-                    <p className="text-gray-500 text-sm">${item.price} each</p>
+                    <h3 className="item-title">{item.title}</h3>
+                    <p className="item-price">${item.price} each</p>
 
                     {/* Quantity Controls */}
-                    <div className="flex items-center gap-2 mt-2">
+                    <div className="qty-controls">
                       <button
                         onClick={() => dispatch(decreaseQty(item.id))}
-                        className="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex justify-center items-center"
+                        className="qty-btn"
                       >
                         –
                       </button>
 
-                      <span className="font-semibold w-6 text-center">
-                        {item.quantity}
-                      </span>
+                      <span className="qty-value">{item.quantity}</span>
 
                       <button
                         onClick={() => dispatch(increaseQty(item.id))}
-                        className="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex justify-center items-center"
+                        className="qty-btn"
                       >
                         +
                       </button>
@@ -64,14 +56,11 @@ const CartPage = () => {
                   </div>
                 </div>
 
-                {/* Item total price */}
-                <div className="text-right">
-                  <p className="font-bold text-lg">${item.totalPrice}</p>
-
-                  {/* Remove */}
+                <div className="item-total">
+                  <p>${item.totalPrice}</p>
                   <button
                     onClick={() => dispatch(removeItem(item.id))}
-                    className="text-red-500 hover:text-red-700 text-sm mt-1"
+                    className="remove-btn"
                   >
                     Remove
                   </button>
@@ -80,27 +69,23 @@ const CartPage = () => {
             ))}
           </div>
 
-          {/* Summary / Checkout Box */}
-          <div className="bg-gray-100 p-6 rounded-xl shadow-md space-y-4">
-            <h3 className="font-bold text-xl border-b pb-2">Order Summary</h3>
-            <p className="flex justify-between text-lg">
+          {/* Order Summary */}
+          <div className="summary-box">
+            <h3>Your Order Summary</h3>
+            <p className="summary-row">
               Total Items: <span>{totalQuantity}</span>
             </p>
-            <p className="flex justify-between font-bold text-2xl">
+            <p className="summary-total">
               Total: <span>${totalPrice}</span>
             </p>
 
-            {/* Checkout Button */}
-            <button
-              className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg mt-4 font-semibold transition"
-            >
-              Checkout
-            </button>
+            <Link to="/checkout">
+            <button className="checkout-btn">Proceed to Checkout</button>
+          </Link>
 
-            {/* Clear Cart */}
             <button
               onClick={() => dispatch(clearCart())}
-              className="bg-red-500 hover:bg-red-600 text-white w-full py-3 rounded-lg mt-2 font-semibold transition"
+              className="clear-btn"
             >
               Clear Cart 🗑
             </button>

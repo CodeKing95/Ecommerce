@@ -12,6 +12,10 @@ import CartPage from "./pages/CartPage";
 import { Toaster } from "react-hot-toast";
 import TopProducts from "./components/TopProduct";
 import Blogs from "./components/Blog";
+import Partnership from "./components/Partnership";
+import Footer from "./components/Footer";
+import CheckoutPage from "./pages/CheckoutPage";
+
 
 const BannerData = {
   discount: "30% OFF",
@@ -39,12 +43,17 @@ const App = () => {
             <Category2 />
             <Services />
             <Banner data={BannerData} />
-            <Products searchTerm={""} />
+            <Products  />
             <TopProducts />
             <Blogs/>
+            <Partnership />
+            <Footer />
           </>
         } />
-        <Route path="/cart" element={<CartPage />} />
+        <Route path="/cart" element={<CartPage />}/>
+        <Route path="/checkout" element={<CheckoutPage />}/>
+        
+
       </Routes>
     </>
   );

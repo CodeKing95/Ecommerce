@@ -5,6 +5,7 @@ import type { Product } from "./ProductCard";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import toast from "react-hot-toast";
+import { IoMdSearch } from "react-icons/io";
 
 
 import Img1 from '../assets/product/P5.png';
@@ -133,17 +134,16 @@ const ProductsData: Product[] = [
   {
     id: 18,
     img: Img18,
-    title: "Playstation VR2",
-    price: 120,
+    title: "Playstation",
+    price: 299,
     aosDelay: "0",
-  },  
+  },
+
+  
 ];
-
-
 
 const Products: React.FC = () => {
   const dispatch = useDispatch();
-  
 
   const handleAddToCart = (product: Product) => {
     dispatch(addToCart(product)); // 👈 now updates Redux!

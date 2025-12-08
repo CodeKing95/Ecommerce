@@ -72,3 +72,4 @@ export default defineConfig([
 ])
 ```
 # ReactTypeScript2
+# ReactTypeScript3

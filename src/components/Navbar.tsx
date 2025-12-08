@@ -3,8 +3,6 @@ import { IoMdSearch } from "react-icons/io";
 import { FaOpencart } from "react-icons/fa6";
 import CartButton from "./CartButton";
 
-
-
 const MenuLinks = [
     {
         id: 1,
@@ -71,15 +69,13 @@ const Navbar = () => {
                     {/* Navbar Right Section */}
                     <div className="flex justify-between items-center gap-4">
                     {/* Search Bar section */}
-           <div className="relative hidden sm:block">
-           <input
-  type="text"
-  placeholder="Search products..."
-  className="search-bar"
-  onChange={(e) => setSearchTerm(e.target.value)}
-/>
-            <IoMdSearch className="text-xl text-gray-600 absolute right-3 top-1/2 -translate-y-1/2" />
-          </div>
+        <div className="relative group hidden sm:block">
+                    <input type="text" placeholder="Search" className="
+                    search-bar
+                    "/>
+                    <IoMdSearch className="text-xl text-gray-600
+                     group-hover:text-primary dark:text-gray-400 absolute top-1/-translate-y-1/2 right-3 duration-200"/>
+                </div>
 
                 {/* Order-button section */ }
                    <div className="flex justify-between items-center gap-4">

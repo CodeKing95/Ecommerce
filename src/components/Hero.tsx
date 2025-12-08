@@ -1,6 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
-import Image1 from "../assets/website/headphone.png";
+import Image1 from "../assets/website/razer1.png";
+import Image2 from "../assets/website/gaming.png";
+import Image3 from "../assets/website/razer1.png";
+
+
 
 const HeroData = [
     {
@@ -9,8 +13,24 @@ const HeroData = [
         subtitle: "Beats Solo",
         title: "Wireless",
         title2: "Headphone",
-    }
+        
+    },
+     {
+        id: 2,
+        img: Image2,
+        subtitle: "Beats Solo",
+        title: "Wireless",
+        title2: "Headphone",
+    },
+     {
+        id: 3,
+        img: Image3,
+        subtitle: "Beats Solo",
+        title: "Wireless",
+        title2: "Headphone",
+    },
 ]
+
 
 const Hero = () => {
   var settings = {
@@ -18,7 +38,12 @@ const Hero = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: false,
+    arrows: false,
+    cssEase: "ease-in-out",
   };
     return (
      <div className="container">

@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "./Button";
 
-
 export type Product = {
   id: number;
   img: string;
@@ -49,6 +48,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, onAddToCart }) => {
             </div>
 
             <div className="leading-7">
+              
               <h2 className="font-semibold">{item.title}</h2>
               <h2 className="font-bold">${item.price}</h2>
             </div>
