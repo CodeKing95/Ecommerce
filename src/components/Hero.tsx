@@ -1,3 +1,5 @@
+/*Welcome*/
+
 import Slider from "react-slick";
 import Image1 from "../assets/website/razer1.png";
 import Image2 from "../assets/website/gaming.png";
