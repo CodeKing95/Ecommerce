@@ -1,3 +1,5 @@
+/*Welcome*/
+
 import React from "react";
 import { IoMdSearch } from "react-icons/io";
 import CartButton from "./CartButton";
